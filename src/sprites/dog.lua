@@ -1,21 +1,24 @@
--- toby dog sprite for DS
+-- toby dog sprite for GBA and NDS
 
 local dog = {}
-dog.spriteScale = 4
+dog.spriteScale = 2
 
-dog.spriteXOffset = love.graphics.getWidth()/2
-dog.spriteYOffset = love.graphics.getHeight()/2
+dog.spriteX = love.graphics.getWidth()/2
+dog.spriteY = love.graphics.getHeight()/2
 
 dog.spriteWidth = 18
 dog.spriteHeight  = 17
 
 dog.spriteRotation = 0
 
+dog.spriteColor = {0.408, 0.396, 0.392, 1}
+
 function love.draw()
     love.graphics.print(love.timer.getFPS())
+    love.graphics.setColor(dog.spriteColor)
     love.graphics.push()
 
-    love.graphics.translate(dog.spriteXOffset, dog.spriteYOffset)
+    love.graphics.translate(dog.spriteX, dog.spriteY)
     love.graphics.scale(dog.spriteScale, dog.spriteScale)
     love.graphics.rotate(dog.spriteRotation)
     love.graphics.translate(-(dog.spriteWidth/2), -(dog.spriteHeight/2))
@@ -62,6 +65,8 @@ function love.draw()
     love.graphics.rectangle("fill", 16, 16, 1, 1)
 
     love.graphics.pop()
+
+    love.graphics.setColor(1, 1, 1, 1)
 end
 
 return dog
